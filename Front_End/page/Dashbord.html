@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POS Dashboard</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+
+        display: flex;
+        justify-content: center; /* horizontal center */
+        align-items: center; /* vertical center */
+        height: 100vh; /* full screen height */
+      }
+
+      .nav button {
+        flex: 1;
+        min-width: 200px;
+        padding: 20px;
+        background: #1e3799;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .nav button:hover {
+        background: #0c2461;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1000px;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #1e3799;
+      }
+
+      .cards {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        flex: 1;
+        min-width: 200px;
+        background: #eef2ff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .card h2 {
+        margin: 10px 0;
+        color: #1e3799;
+      }
+
+      .nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+        padding: 20px;
+        background: #1e3799;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: 0.2s;
+      }
+
+      .nav a:hover {
+        background: #0c2461;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 14px;
+        color: #888;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🧾 POS Dashboard</h1>
+
+      <div class="cards">
+        <div class="card">
+          <p>Totle Customer</p>
+          <h2>82</h2>
+        </div>
+        <div class="card">
+          <p>Transactions</p>
+          <h2>47</h2>
+        </div>
+        <div class="card">
+          <p>Items Sold</p>
+          <h2>158</h2>
+        </div>
+      </div>
+
+      <div class="nav">
+        <a href="#" onclick="goCustomer()">👥 Customers</a>
+        <a href="#" onclick="goItem()">📦 Items</a>
+        <a href="#" onclick="goOrder()">🧾 Place Order</a>
+      </div>
+
+      <div class="footer">POS System © 2026</div>
+    </div>
+
+    <script>
+      function goCustomer() {
+        window.location.href = "customer.html";
+      }
+
+      function goItem() {
+        window.location.href = "item.html";
+      }
+
+      function goOrder() {
+        window.location.href = "place-order.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        font-family: Arial, sans-serif;
+      }
+
+      .login-card {
+        width: 100%;
+        height: 40vh;
+        max-width: 700px;
+        background: white;
+        padding: 40px 30px;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .login-card h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: bold;
+        color: #1e3c72;
+      }
+
+      .form-control {
+        border-radius: 30px;
+        padding: 12px 20px;
+      }
+
+      .btn-login {
+        border-radius: 30px;
+        padding: 10px;
+        font-weight: 600;
+        background: #1e3c72;
+        color: white;
+      }
+
+      .btn-login:hover {
+        background: #16325c;
+      }
+
+      .footer-text {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+        color: #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-card">
+      <h2>🔐 POS Login</h2>
+
+      <div class="form-group">
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Username"
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Password"
+        />
+      </div>
+
+      <button class="btn btn-login btn-block" onclick="login()">Login</button>
+
+      <div class="footer-text">POS System © 2026</div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/Assest/lib/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+      function login() {
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!username || !password) {
+          alert("Please fill all fields");
+          return;
+        }
+
+        // temporary login (frontend only)
+        if (username === "savindu" && password === "200357") {
+          Swal.fire({
+            title: "Success!",
+            text: " successfully ok ",
+            icon: "success",
+            timer: 2000,
+          });
+          window.location.href = "page/Dashbord.html";
+        } else {
+          alert("Invalid username or password");
+        }
+      }
+    </script>
+  </body>
+</html>

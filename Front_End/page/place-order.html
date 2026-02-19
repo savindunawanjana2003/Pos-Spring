@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Order Page</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .mainconteiner {
+        width: 1000px;
+        height: 800px;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      s h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+      }
+
+      .inputrConteiner {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .inputBox {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .inputBox label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #444;
+      }
+
+      .inputBox input,
+      .inputBox select {
+        height: 40px;
+        padding: 8px 12px;
+        font-size: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        transition: 0.3s;
+      }
+
+      .inputBox input:focus,
+      .inputBox select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 5px #667eea88;
+      }
+
+      .tableConteiner {
+        margin-top: 30px;
+        height: 150px;
+        /* border: 2px dashed #ccc; */
+        border-radius: 10px;
+        display: flex;
+        /* justify-content: center;
+        align-items: center; */
+        color: #888;
+        font-weight: bold;
+        /* background-color: #218838; */
+        overflow-y: scroll;
+      }
+
+      .buttonContainer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 30px;
+        display: flex;
+        /* justify-content: center; */
+        gap: 20px;
+        background-color: #21883780;
+        border-radius: 10px;
+      }
+
+      .buttonContainer button {
+        height: 45px;
+        width: 140px;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      /* Add Button */
+      .buttonContainer button:nth-child(1) {
+        background-color: #28a745;
+      }
+
+      .buttonContainer button:nth-child(1):hover {
+        background-color: #218838;
+        transform: scale(1.05);
+      }
+
+      /* Update Button */
+      .buttonContainer button:nth-child(2) {
+        background-color: #007bff;
+      }
+
+      .buttonContainer button:nth-child(2):hover {
+        background-color: #0069d9;
+        transform: scale(1.05);
+      }
+
+      /* Delete Button */
+      .buttonContainer button:nth-child(3) {
+        background-color: #dc3545;
+      }
+
+      .buttonContainer button:nth-child(3):hover {
+        background-color: #c82333;
+        transform: scale(1.05);
+      }
+
+      .buttonContainer button:nth-child(4) {
+        background-color: #6c757d;
+      }
+
+      .buttonContainer button:nth-child(4):hover {
+        background-color: #5a6268;
+        transform: scale(1.05);
+      }
+
+      #tableId {
+        width: 100%;
+      }
+
+      #tableId th {
+        border: 7px solid;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+      #tableId th tr {
+        border: 5px solid #111010;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mainconteiner">
+      <h2>Order Management</h2>
+
+      <div class="inputBox">
+        <label>Oder id :</label>
+        <input type="text" id="oderId" />
+      </div>
+
+      <div class="inputrConteiner">
+        <div class="inputBox">
+          <label>Item Id :</label>
+          <select id="itemIdSelector">
+            <option value="I001">I001</option>
+            <option value="I002">I002</option>
+            <option value="I003">I003</option>
+            <option value="I004">I004</option>
+          </select>
+        </div>
+
+        <div class="inputBox">
+          <label>Customer ID :</label>
+          <select id="custormerIdSelector">
+            <option value="C001">C001</option>
+            <option value="C002">C002</option>
+            <option value="C003">C003</option>
+            <option value="C004">C004</option>
+          </select>
+        </div>
+
+        <div class="inputBox">
+          <label>Item Name :</label>
+          <input type="text" id="itemName" />
+        </div>
+
+        <div class="inputBox">
+          <label>Item Price :</label>
+          <input type="number" id="itemPrice" />
+        </div>
+
+        <div class="inputBox">
+          <label>Available Item Qty :</label>
+          <input type="number" id="avelableItemQty" />
+        </div>
+
+        <div class="inputBox">
+          <label>Qty On Hand :</label>
+          <input type="number" id="QtyOnHandId" />
+        </div>
+
+        <div class="inputBox">
+          <label>totle Price:</label>
+          <input type="number" id="totlePrice" />
+        </div>
+      </div>
+
+      <div class="buttonContainer">
+        <button id="addtoCartBtnId">Add to cart</button>
+        <button onclick="refresh()">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+      </div>
+
+      <div class="tableConteiner">
+        <table id="tableId" class="table">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">Item Id</th>
+              <th scope="col">custormer id</th>
+              <th scope="col">unit Price</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Totle Price</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyId"></tbody>
+        </table>
+      </div>
+
+      <div class="buttonContainer">
+        <button onclick="PlaceOder()">Place oder</button>
+      </div>
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/Assest/lib/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+      let cart = [];
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      $("#addtoCartBtnId").on("click", () => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        let data = localStorage.getItem("item");
+        // Convert back to object
+        let itemObject = JSON.parse(data);
+
+        let likeqty = localStorage.getItem("likEqty");
+
+        console.log("--------------------------------------");
+        console.log(itemObject.avelableItemQty);
+        console.log(likeqty);
+        if (Number(itemObject.avelableItemQty) < Number(likeqty)) {
+          // alert("Plese Enter relavent qty... ");
+          Swal.fire({
+            title: "Plese Enter relavent qty... ",
+            text: "",
+            icon: "err",
+            timer: 2000,
+          });
+          return;
+        }
+
+        const itemId = $("#itemIdSelector").val();
+        const custormerID = $("#custormerIdSelector").val();
+        const unitPrice = $("#itemPrice").val();
+        const qtys = likeqty;
+        const totlePrice = $("#totlePrice").val();
+        const oderId = $("#oderId").val();
+
+        // let tr = Document.createElement("tr");
+        let row = `<tr style=" cursor: pointer;">
+                                    <td>${itemId}</td>
+                                    <td>${custormerID}</td>
+                                    <td>${unitPrice}</td>
+                                     <td>${qtys}</td>
+                                     <td>${totlePrice}</td>
+                                    <td>
+                                         <button id="cansalId"  data-itemid="${itemId}" >Cansal</button>
+                                         <button  id="editId" data-itemid="${itemId}" >Edit</button>
+                          </td>
+                                  </tr>`;
+
+        $("#tbodyId").append(row);
+
+        let newItem = {
+          oderDeatilesId: "null",
+          oderId: oderId,
+          itemId: itemId,
+          qty: qtys,
+          totlePrice: totlePrice,
+        };
+
+        cart.push(newItem);
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        clearForm();
+
+        // console.log(carz);
+      });
+
+      function lodeCustormers() {
+        $.ajax({
+          url: "http://localhost:8081/api/v1/customer/getAll",
+          method: "GET",
+          success: function (response) {
+            console.log(response);
+            $("#tbodyId").empty();
+
+            const custormerId = [];
+
+            for (let i = 0; i < response.length; i++) {
+              let customerid = response[i].cId;
+              custormerId.push(customerid);
+            }
+
+            const select = document.getElementById("custormerIdSelector");
+            $("#custormerIdSelector").empty();
+            custormerId.forEach((custormerId, index) => {
+              const option = document.createElement("option");
+              option.value = custormerId; // Option value
+              option.text = custormerId; // Option display text
+              select.appendChild(option);
+            });
+          },
+        });
+      }
+
+      function Items() {
+        $.ajax({
+          url: "http://localhost:8081/api/v1/Item/getAll",
+          method: "GET",
+          success: function (response) {
+            const itemIds = [];
+
+            for (let i = 0; i < response.length; i++) {
+              let itemId = response[i].itemId;
+              itemIds.push(itemId);
+            }
+
+            const select = document.getElementById("itemIdSelector");
+            $("#itemIdSelector").empty();
+            itemIds.forEach((itemIds, index) => {
+              const option = document.createElement("option");
+              option.value = itemIds; //  value
+              option.text = itemIds; // text
+              select.appendChild(option);
+            });
+          },
+        });
+      }
+
+      $("#custormerIdSelector").on("change", function () {
+        const selectedValue = $(this).val(); // select values
+        console.log("Selected customer ID:", selectedValue);
+      });
+
+      $("#itemIdSelector").on("change", function () {
+        const selectedValue = $(this).val(); // select value
+        console.log("Selected Item ID:", selectedValue);
+
+        $.ajax({
+          url: "http://localhost:8081/api/v1/Item/getAll",
+          method: "GET",
+          success: function (response) {
+            // const itemObject = [];
+
+            for (let i = 0; i < response.length; i++) {
+              let itemId = response[i].itemId;
+              if (itemId == selectedValue) {
+                let item = {
+                  id: response[i].itemId,
+                  itemName: response[i].itemName,
+                  itemPrice: response[i].price,
+                  avelableItemQty: response[i].qty,
+                };
+
+                localStorage.setItem("item", JSON.stringify(item));
+
+                const itemid = response[i].itemId;
+                const nasme = response[i].itemName;
+                const qty = response[i].qty;
+                const prices = response[i].price;
+                $("#itemName").val(nasme);
+                $("#itemPrice").val(prices);
+                $("#avelableItemQty").val(qty);
+              }
+            }
+          },
+        });
+      });
+
+      // $("#QtyOnHandId").on("change", function () {
+      //   console.log("Changed:", $(this).val());
+      //   alert("ppp...");
+      // });
+
+      $("#QtyOnHandId").on("input", function () {
+        console.log("Typing:", $(this).val());
+        localStorage.setItem("likEqty", $(this).val());
+
+        let data = localStorage.getItem("item");
+        // Convert back to object
+        let itemObject = JSON.parse(data);
+
+        const CustormerLikeqty = $(this).val();
+        const itemPrice = itemObject.itemPrice;
+
+        const totlePrice = CustormerLikeqty * itemPrice;
+
+        $("#totlePrice").val(totlePrice);
+      });
+
+      function clearForm() {
+        $("#itemName").val("");
+        $("#itemPrice").val("");
+        $("#avelableItemQty").val("");
+        $("#QtyOnHandId").val("");
+        $("#totlePrice").val("");
+      }
+
+      function PlaceOder() {
+        const itemId = $("#itemIdSelector").val();
+        const custormerID = $("#custormerIdSelector").val();
+        const unitPrice = $("#itemPrice").val();
+        // const qtys = likeqty;
+        const totlePrice = $("#totlePrice").val();
+        const oderId = $("#oderId").val();
+        let nowdate = new Date();
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (!custormerID || !oderId || cart.length === 0) {
+          alert("Please select a item first before purches..");
+          return;
+        }
+
+        $.ajax({
+          url: "http://localhost:8081/api/v1/placeOder/saveOder",
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({
+            oderId: oderId,
+            custormerId: custormerID,
+            oderDeatilesList: cart,
+            date: nowdate,
+          }),
+          success: function (respons, textStatus, xhr) {
+            if (xhr.status === 201) {
+              Swal.fire({
+                title: "Successfully Saved",
+                text: "",
+                icon: "success",
+                timer: 2000,
+              });
+            }
+            localStorage.setItem("cart", JSON.stringify([]));
+
+            $("#tbodyId").empty();
+
+            lodeNextId();
+            clearForm();
+          },
+          error: function (respons, textStatus, xhr) {
+            Swal.fire({
+              title: "Saved UnSuccessfully ! ",
+              text: "",
+              icon: "success",
+              timer: 2000,
+            });
+          },
+        });
+      }
+
+      function lodeNextId() {
+        $.ajax({
+          url: "http://localhost:8081/api/v1/placeOder/getLastOderId",
+          method: "GET",
+          success: function (respons) {
+            const id = respons;
+            $("#oderId").val(id);
+          },
+          error: function (respons) {
+            console.log("Internal Serer Error...");
+          },
+        });
+      }
+
+      function refresh() {
+        clearForm();
+        lodeNextId();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lodeNextId();
+        lodeCustormers();
+        Items();
+      });
+    </script>
+  </body>
+</html>
