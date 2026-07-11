@@ -58,3 +58,22 @@ Pos-Spring-with-utub-video/
 │       └── place-order.html     # Relational Billing Transaction Terminal
 │
 └── index.html                   # Core Gateway UI Bootstrapper
+
+
+
+🛠️ Technology Stack
+Backend: Java SE, Spring Boot (Spring Web, Spring Data JPA, Hibernate)
+
+Frontend: HTML5, CSS3, Vanilla JavaScript, jQuery (Ajax)
+
+Database Mapping: Enterprise Relational Schema Operations
+
+Build Tool: Apache Maven
+
+🚀 Setup & Execution Instructions
+1. Running the Backend REST API
+Navigate to the Back_End directory.
+
+Configure your relational database credentials inside src/main/resources/application.properties.
+
+Run the Spring Boot application using your IDE or via terminal:
